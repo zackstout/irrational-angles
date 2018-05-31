@@ -1,4 +1,7 @@
 
+var angle = 0.2;
+var counter = 0; // to slow down frame rate
+
 function setup() {
   createCanvas(600, 600);
   background(125);
@@ -7,10 +10,11 @@ function setup() {
 }
 
 function drawCircles() {
+  $('#holder').text(angle.toFixed(3));
   push();
   translate(width/2, height/2);
   fill('green');
-  var angle = 0.2;
+  // angle = 0.2;
   var xLength = 2;
 
   for (var i=0; i < 100; i++) {
@@ -21,4 +25,13 @@ function drawCircles() {
   }
 
   pop();
+}
+
+function draw() {
+  counter ++;
+  if (counter % 3 === 0) {
+    background(125);
+    angle += 0.002;
+    drawCircles();
+  }
 }
